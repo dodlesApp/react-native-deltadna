@@ -57,6 +57,7 @@ public class RNDeltaDNAModule extends ReactContextBaseJavaModule {
       ).withSettings(new DDNA.SettingsModifier() {
         @Override
         public void modify(Settings settings) {
+	  try{
           ReadableMap s = options.getMap("settings");
           if (s.hasKey("onStartSendGameStartedEvent")) {
             settings.setOnInitSendGameStartedEvent(s.getBoolean("onStartSendGameStartedEvent"));
@@ -82,6 +83,10 @@ public class RNDeltaDNAModule extends ReactContextBaseJavaModule {
           if (s.hasKey("onStartSendClientDeviceEvent")) {
             settings.setOnInitSendClientDeviceEvent(s.getBoolean("onStartSendClientDeviceEvent"));
           }
+	}
+	catch (Exception e){
+	e.printStackTrace();
+	}
         }
       })
       );
